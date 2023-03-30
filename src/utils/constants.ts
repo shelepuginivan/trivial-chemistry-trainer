@@ -1,4 +1,5 @@
 export const HOME_ROUTE = '/'
-export const TRAINING_ROUTE = '/training'
+export const EXERCISES_ROUTE = '/exercises'
+export const TRAINING_ROUTE = '/training/:exerciseId'
 export const SETTINGS_ROUTE = '/settings'
 export const STATS_ROUTE = '/stats'
