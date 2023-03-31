@@ -1,6 +1,8 @@
 import { FC, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { EXERCISES_MAPS } from '../../utils/trivialNamesMaps'
 import { randomMapItem } from '../../utils/randomMapItem'
+import { EXERCISES_ROUTE } from '../../utils/routes'
 import TrainingResults from '../TrainingResults/TrainingResults'
 import Input from '../../ui/Input/Input'
 import QuestionCard from '../../ui/QuestionCard/QuestionCard'
@@ -9,6 +11,8 @@ import SubmitButton from '../../ui/SubmitButton/SubmitButton'
 import styles from './trainingComponent.module.sass'
 
 const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
+	const navigate = useNavigate()
+
 	const trainingStartTime = useRef(Date.now())
 
 	const currentExerciseMap = EXERCISES_MAPS[exerciseId]
@@ -63,8 +67,13 @@ const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 					onKeyDown={(e) => (e.code === 'Enter' ? submit() : {})}
 				/>
 				<menu>
-					<CancelButton>Выйти</CancelButton>
-					<SubmitButton>Завершить</SubmitButton>
+					<CancelButton onClick={() => navigate(EXERCISES_ROUTE)}>
+						Выйти
+					</CancelButton>
+
+					<SubmitButton onClick={() => setFinished(true)}>
+						Завершить
+					</SubmitButton>
 				</menu>
 			</main>
 		)
