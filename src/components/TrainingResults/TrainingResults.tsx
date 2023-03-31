@@ -39,18 +39,20 @@ const TrainingResults: FC<PropsType> = ({
 						<td>Правильный ответ</td>
 					</tr>
 				</thead>
-				{incorrectAnswers.map((questionAnswerPair, index) => {
-					const [question, answer] = questionAnswerPair
-					const correctAnswer = exerciseMap.get(question) as string
+				<tbody>
+					{incorrectAnswers.map((questionAnswerPair, index) => {
+						const [question, answer] = questionAnswerPair
+						const correctAnswer = exerciseMap.get(question) as string
 
-					return (
-						<tr key={index}>
-							<td>{question}</td>
-							<td className={styles.mistake}>{answer}</td>
-							<td className={styles.correct}>{correctAnswer}</td>
-						</tr>
-					)
-				})}
+						return (
+							<tr key={index}>
+								<td>{question}</td>
+								<td className={styles.mistake}>{answer}</td>
+								<td className={styles.correct}>{correctAnswer}</td>
+							</tr>
+						)
+					})}
+				</tbody>
 			</table>
 		) : null
 
