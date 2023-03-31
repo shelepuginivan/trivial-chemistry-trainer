@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { EXERCISES_ROUTE, HOME_ROUTE, SETTINGS_ROUTE, STATS_ROUTE } from '../../utils/constants'
+import { EXERCISES_ROUTE, HOME_ROUTE, SETTINGS_ROUTE, STATS_ROUTE } from '../../utils/routes'
 
 import styles from './header.module.sass'
 

@@ -6,7 +6,7 @@ import {
 	SETTINGS_ROUTE,
 	STATS_ROUTE,
 	TRAINING_ROUTE,
-} from '../utils/constants'
+} from '../utils/routes'
 import Home from '../pages/Home'
 import Training from '../pages/Training'
 import Settings from '../pages/Settings'
