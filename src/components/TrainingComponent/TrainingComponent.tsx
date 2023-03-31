@@ -4,6 +4,8 @@ import { randomMapItem } from '../../utils/randomMapItem'
 import TrainingResults from '../TrainingResults/TrainingResults'
 import Input from '../../ui/Input/Input'
 import QuestionCard from '../../ui/QuestionCard/QuestionCard'
+import CancelButton from '../../ui/CancelButton/CancelButton'
+import SubmitButton from '../../ui/SubmitButton/SubmitButton'
 
 const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 	const trainingStartTime = useRef(Date.now())
@@ -59,6 +61,10 @@ const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 					type='text'
 					onKeyDown={(e) => (e.code === 'Enter' ? submit() : {})}
 				/>
+				<menu>
+					<CancelButton>Выйти</CancelButton>
+					<SubmitButton>Завершить</SubmitButton>
+				</menu>
 			</main>
 		)
 	}
