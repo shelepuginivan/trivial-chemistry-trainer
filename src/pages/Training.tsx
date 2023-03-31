@@ -16,29 +16,34 @@ const Training: FC = () => {
 	const currentExerciseMap = EXERCISES_MAPS[exerciseId]
 
 	const [finished, setFinished] = useState<boolean>(false)
-	const [correctAnswers, setCorrectAnswers] = useState<[string, string][]>([['', '']])
-	const [incorrectAnswers, setIncorrectAnswers] = useState<[string, string][]>([['', '']])
+	const [correctAnswers, setCorrectAnswers] = useState<[string, string][]>([])
+	const [incorrectAnswers, setIncorrectAnswers] =
+		useState<[string, string][]>([])
 
 	const OngoingTraining: FC = () => {
-		const [initialQuestion, initialCorrectAnswer] = randomMapItem(currentExerciseMap)
+		const [initialQuestion, initialCorrectAnswer] =
+			randomMapItem(currentExerciseMap)
 
 		const answerInput = useRef<HTMLInputElement>(null)
 
 		const [question, setQuestion] = useState<string>(initialQuestion)
-		const [correctAnswer, setCorrectAnswer] = useState<string>(initialCorrectAnswer)
+		const [correctAnswer, setCorrectAnswer] =
+			useState<string>(initialCorrectAnswer)
 
 		const submit = () => {
 			const receivedAnswer = answerInput.current?.value
 
 			if (!receivedAnswer) return
-
 			;(receivedAnswer === correctAnswer
 				? setCorrectAnswers
-				: setIncorrectAnswers)(
-				(prev) => [...prev, [question, receivedAnswer]]
+				: setIncorrectAnswers)((prev) =>
+				prev
+					? [...prev, [question, receivedAnswer]]
+					: [[question, receivedAnswer]]
 			)
 
-			const [newQuestion, newCorrectAnswer] = randomMapItem(currentExerciseMap)
+			const [newQuestion, newCorrectAnswer] =
+				randomMapItem(currentExerciseMap)
 			setQuestion(newQuestion)
 			setCorrectAnswer(newCorrectAnswer)
 
@@ -46,17 +51,35 @@ const Training: FC = () => {
 		}
 
 		return (
-			<main onKeyDown={e => e.code === 'Escape' ? setFinished(true) : {}}>
+			<main
+				onKeyDown={(e) =>
+					e.code === 'Escape' ? setFinished(true) : {}
+				}
+			>
 				{question}
-				<input autoFocus ref={answerInput} type='text' onKeyDown={e => e.code === 'Enter' ? submit() : {}} />
+				<input
+					autoFocus
+					ref={answerInput}
+					type='text'
+					onKeyDown={(e) => (e.code === 'Enter' ? submit() : {})}
+				/>
 			</main>
 		)
 	}
 
-
-	return <>{
-		finished ? <TrainingResults correctAnswers={correctAnswers} incorrectAnswers={incorrectAnswers} trainingStartTime={trainingStartTime.current}/> : <OngoingTraining />
-	}</>
+	return (
+		<>
+			{finished ? (
+				<TrainingResults
+					correctAnswers={correctAnswers}
+					incorrectAnswers={incorrectAnswers}
+					trainingStartTime={trainingStartTime.current}
+				/>
+			) : (
+				<OngoingTraining />
+			)}
+		</>
+	)
 }
 
 export default Training
