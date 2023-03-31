@@ -6,6 +6,7 @@ import Input from '../../ui/Input/Input'
 import QuestionCard from '../../ui/QuestionCard/QuestionCard'
 import CancelButton from '../../ui/CancelButton/CancelButton'
 import SubmitButton from '../../ui/SubmitButton/SubmitButton'
+import styles from './trainingComponent.module.sass'
 
 const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 	const trainingStartTime = useRef(Date.now())
@@ -49,6 +50,7 @@ const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 
 		return (
 			<main
+				className={styles.ongoingTraining}
 				onKeyDown={(e) =>
 					e.code === 'Escape' ? setFinished(true) : {}
 				}
