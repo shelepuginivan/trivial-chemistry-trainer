@@ -59,7 +59,7 @@ const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 					e.code === 'Escape' ? setFinished(true) : {}
 				}
 			>
-				<QuestionCard question={question} answer={correctAnswer}/>
+				<QuestionCard question={question} answer={correctAnswer} />
 				<Input
 					autoFocus
 					ref={answerInput}
