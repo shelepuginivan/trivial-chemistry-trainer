@@ -2,6 +2,7 @@ import { FC, useRef, useState } from 'react'
 import { EXERCISES_MAPS } from '../../utils/trivialNamesMaps'
 import { randomMapItem } from '../../utils/randomMapItem'
 import TrainingResults from '../TrainingResults/TrainingResults'
+import Input from '../../ui/Input/Input'
 
 const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 	const trainingStartTime = useRef(Date.now())
@@ -51,7 +52,7 @@ const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 				}
 			>
 				{question}
-				<input
+				<Input
 					autoFocus
 					ref={answerInput}
 					type='text'
