@@ -71,6 +71,7 @@ const Training: FC = () => {
 		<>
 			{finished ? (
 				<TrainingResults
+					exerciseMap={currentExerciseMap}
 					correctAnswers={correctAnswers}
 					incorrectAnswers={incorrectAnswers}
 					trainingStartTime={trainingStartTime.current}
