@@ -1,3 +1,5 @@
+@import 'src/styles/variables'
+
 .trainingStats
 	display: flex
 	padding: 20px
@@ -22,3 +24,19 @@
 
 		thead
 			font-weight: bold
+
+	ul
+		li:first-child::marker
+			content: $time-icon
+
+		li:nth-child(2)::marker
+			content: $total-icon
+
+		li:nth-child(3)::marker
+			content: $correct-icon
+
+		li:nth-child(4)::marker
+			content: $percentage-icon
+
+		li:nth-child(5)::marker
+			content: $speed-icon
