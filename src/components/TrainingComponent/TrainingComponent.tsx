@@ -34,11 +34,10 @@ const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 			if (!receivedAnswer) return
 			;(receivedAnswer === correctAnswer
 				? setCorrectAnswers
-				: setIncorrectAnswers)((prev) =>
-				prev
-					? [...prev, [question, receivedAnswer]]
-					: [[question, receivedAnswer]]
-			)
+				: setIncorrectAnswers)((prev) => [
+				...prev,
+				[question, receivedAnswer],
+			])
 
 			const [newQuestion, newCorrectAnswer] =
 				randomMapItem(currentExerciseMap)
