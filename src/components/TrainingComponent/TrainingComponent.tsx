@@ -3,6 +3,7 @@ import { EXERCISES_MAPS } from '../../utils/trivialNamesMaps'
 import { randomMapItem } from '../../utils/randomMapItem'
 import TrainingResults from '../TrainingResults/TrainingResults'
 import Input from '../../ui/Input/Input'
+import QuestionCard from '../../ui/QuestionCard/QuestionCard'
 
 const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 	const trainingStartTime = useRef(Date.now())
@@ -51,7 +52,7 @@ const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 					e.code === 'Escape' ? setFinished(true) : {}
 				}
 			>
-				{question}
+				<QuestionCard question={question} answer={correctAnswer}/>
 				<Input
 					autoFocus
 					ref={answerInput}
