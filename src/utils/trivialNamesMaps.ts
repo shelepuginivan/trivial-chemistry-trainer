@@ -6,7 +6,7 @@ const NON_ORGANIC_OXIDES_MAP = new Map<string, string>([
 ])
 
 const NON_ORGANIC_SALTS_MAP = new Map<string, string>([
-	['Барит', 'H2SO4'],
+	['Барит', 'BaSO4'],
 	['Каменная соль', 'NaCl'],
 ])
 
