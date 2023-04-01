@@ -1,0 +1,34 @@
+@media screen and (max-width: 900px)
+	.mainContainer
+		margin-inline: 10%
+
+@media screen and (max-width: 785px)
+	.responsiveGrid
+		grid-template-columns: repeat(3, 1fr)
+
+@media screen and (max-width: 600px)
+	.mainContainer
+		margin-inline: 15px
+
+	h1, h2, h3, h4, h5, h6
+		text-align: center
+
+@media screen and (max-width: 550px)
+	.responsiveGrid
+		grid-template-columns: repeat(2, 1fr)
+
+		& > *
+			max-width: 180px
+
+	header > a
+		font-size: medium !important
+
+@media screen and (max-width: 380px)
+	.mainContainer
+		margin-inline: 10px
+
+	menu.responsiveGrid > *
+		padding: 5px 0 0 0
+
+		h3
+			font-size: medium
