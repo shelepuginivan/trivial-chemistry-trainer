@@ -1,14 +1,15 @@
 import { FC, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { EXERCISES_MAPS } from '../../utils/trivialNamesMaps'
-import { randomMapItem } from '../../utils/randomMapItem'
 import { EXERCISES_ROUTE } from '../../utils/routes'
+import { randomMapItem } from '../../utils/randomMapItem'
 import TrainingResults from '../TrainingResults/TrainingResults'
 import Input from '../../ui/Input/Input'
 import QuestionCard from '../../ui/QuestionCard/QuestionCard'
 import CancelButton from '../../ui/CancelButton/CancelButton'
 import SubmitButton from '../../ui/SubmitButton/SubmitButton'
 import styles from './trainingComponent.module.sass'
+import { Stats } from '../../utils/Stats'
 
 const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 	const navigate = useNavigate()
@@ -33,7 +34,7 @@ const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 		const [correctAnswer, setCorrectAnswer] =
 			useState<string>(initialCorrectAnswer)
 
-		const submit = () => {
+		const submitAnswer = () => {
 			const receivedAnswer = answerInput.current?.value
 
 			if (!receivedAnswer) return
@@ -52,11 +53,22 @@ const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 			answerInput.current.value = ''
 		}
 
+		const finishTraining = () => {
+			setFinished(true)
+
+			const correctAnswersPercentage = Math.round(
+				(100 * correctAnswers.length) / (correctAnswers.length +
+					incorrectAnswers.length)
+			)
+
+			Stats.addResultToExerciseStats(exerciseId, correctAnswersPercentage)
+		}
+
 		return (
 			<main
 				className={styles.ongoingTraining}
 				onKeyDown={(e) =>
-					e.code === 'Escape' ? setFinished(true) : {}
+					e.code === 'Escape' ? finishTraining() : {}
 				}
 			>
 				<QuestionCard question={question} answer={correctAnswer} />
@@ -64,14 +76,16 @@ const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 					autoFocus
 					ref={answerInput}
 					type='text'
-					onKeyDown={(e) => (e.code === 'Enter' ? submit() : {})}
+					onKeyDown={(e) =>
+						e.code === 'Enter' ? submitAnswer() : {}
+					}
 				/>
 				<menu>
 					<CancelButton onClick={() => navigate(EXERCISES_ROUTE)}>
 						Выйти
 					</CancelButton>
 
-					<SubmitButton onClick={() => setFinished(true)}>
+					<SubmitButton onClick={finishTraining}>
 						Завершить
 					</SubmitButton>
 				</menu>
