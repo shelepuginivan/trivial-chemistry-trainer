@@ -7,10 +7,10 @@ const ExerciseStats: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 	const exerciseStats = Stats.getStatsOfExerciseById(exerciseId)
 	const exerciseTitle = EXERCISES_NAMES_MAPPING[exerciseId]
 
-	const resultType = (percent: number): 'good' | 'bad' | 'middle' => {
-		if (percent <= 20) return 'bad'
-		if (percent >= 90) return 'good'
-		return 'middle'
+	const getColorFromStat = (percent: number): string => {
+		const hue = (120 * percent / 100).toString()
+
+		return `hsl(${hue}, 100%, 50%)`
 	}
 
 	return (
@@ -21,9 +21,11 @@ const ExerciseStats: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 				{exerciseStats.map((percent, index) => (
 					<div className={styles.bar} key={index}>
 						<div
-							data-result={resultType(percent)}
 							className={styles.value}
-							style={{ height: `${percent}%` }}
+							style={{
+								height: `${percent}%`,
+								backgroundColor: getColorFromStat(percent)
+							}}
 						></div>
 					</div>
 				))}
