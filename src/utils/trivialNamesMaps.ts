@@ -20,3 +20,14 @@ export const EXERCISES_MAPS = [
 	NON_ORGANIC_OXIDES_MAP,
 	NON_ORGANIC_SALTS_MAP
 ]
+
+export const EXERCISES_NAMES_MAPPING = [
+	'Всё вместе',
+	'Неорганика',
+	'Органика',
+	'Оксиды',
+	'Кислоты',
+	'Соли',
+	'Щёлочи',
+	// TODO: Add more exercises
+]
