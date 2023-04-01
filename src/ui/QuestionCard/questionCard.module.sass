@@ -1,3 +1,5 @@
+@import 'src/styles/global'
+
 .card
 	position: relative
 	height: 200px
@@ -6,27 +8,23 @@
 
 .questionSide,
 .answerSide
+	@extend .glass
 	position: absolute
 	left: 0
 	top: 0
 	right: 0
 	bottom: 0
+	padding: 15px
+	border-radius: 15px
 	transition: .2s all ease
 	display: flex
 	align-items: center
 	justify-content: center
+	font-weight: lighter
 	backface-visibility: hidden
 	-webkit-backface-visibility: hidden
 
-.questionSide
-	padding: 15px
-	border-radius: 15px
-	background-color: aquamarine
-
 .answerSide
-	padding: 15px
-	border-radius: 15px
-	background-color: bisque
 	transform: rotateY(180deg)
 
 .card[data-revealed=true]
