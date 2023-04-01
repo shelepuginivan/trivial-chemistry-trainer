@@ -22,7 +22,7 @@ const Exercises: FC = () => {
 			<h1>Упражнения</h1>
 
 			<ExerciseBlock blockName='Общее'>
-				{[0, 1, 2].map((_, index) => exerciseCardById(index))}
+				{[0, 1, 2].map((index) => exerciseCardById(index))}
 			</ExerciseBlock>
 
 			<ExerciseBlock blockName='Нерганическая химия'>
