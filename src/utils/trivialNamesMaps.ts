@@ -102,7 +102,7 @@ const ALKALIES = new Map<string, string>([
 	['Каустик', 'NaOH'],
 ])
 
-const OTHER_NON_ORGANIC = new Map([
+const OTHER_NON_ORGANIC = new Map<string, string>([
 	['Йодоформ', 'CHI3'],
 	['Железный колчедан', 'FeS2'],
 	['Карбамид', 'CO(NH2)2'],
@@ -112,14 +112,14 @@ const OTHER_NON_ORGANIC = new Map([
 	['Фосген', 'COCl2'],
 ])
 
-const NON_ORGANIC_MAP = new Map([
+const NON_ORGANIC_MAP = new Map<string, string>([
 	...NON_ORGANIC_OXIDES_MAP,
 	...NON_ORGANIC_SALTS_MAP,
 ])
 
-const ORGANIC_MAP = new Map([])
+const ORGANIC_MAP = new Map<string, string>([])
 
-const ALL_CHEMICALS_MAP = new Map([
+const ALL_CHEMICALS_MAP = new Map<string, string>([
 	...NON_ORGANIC_MAP,
 	...ORGANIC_MAP
 ])
