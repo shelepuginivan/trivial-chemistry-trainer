@@ -1,5 +1,20 @@
+@import 'variables'
+
 *
 	font-family: "Segoe UI", -apple-system, sans-serif
 
-main
-	padding: 20px 20% 20px 20%
+.mainContainer
+	margin: 20px 20% 20px 20%
+
+.glass
+	background: rgba(255, 255, 255, 0.33)
+	border-radius: 16px
+	box-shadow: $shadow
+	backdrop-filter: blur(5px)
+	-webkit-backdrop-filter: blur(5px)
+	border: 1px solid rgba(255, 255, 255, 0.3)
+
+.gradient
+	background-color: rgb(169, 201, 255)
+	background-image: linear-gradient(rgb(169, 201, 255) 0%, rgb(255, 187, 236) 100%)
+
