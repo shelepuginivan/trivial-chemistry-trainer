@@ -1,19 +1,14 @@
 import { FC, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { EXERCISES_MAPS } from '../../utils/trivialNamesMaps'
-import { EXERCISES_ROUTE } from '../../utils/routes'
+import { EXERCISES_MAPS, EXERCISES_NAMES_MAPPING } from '../../utils/trivialNamesMaps'
 import { randomMapItem } from '../../utils/randomMapItem'
 import TrainingResults from '../TrainingResults/TrainingResults'
 import Input from '../../ui/Input/Input'
 import QuestionCard from '../../ui/QuestionCard/QuestionCard'
-import CancelButton from '../../ui/CancelButton/CancelButton'
-import SubmitButton from '../../ui/SubmitButton/SubmitButton'
 import styles from './trainingComponent.module.sass'
 import { Stats } from '../../utils/Stats'
+import TrainingMenu from '../TrainingMenu/TrainingMenu'
 
 const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
-	const navigate = useNavigate()
-
 	const trainingStartTime = useRef(Date.now())
 
 	const currentExerciseMap = EXERCISES_MAPS[exerciseId]
@@ -65,30 +60,27 @@ const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 		}
 
 		return (
-			<main
-				className={styles.ongoingTraining}
-				onKeyDown={(e) =>
-					e.code === 'Escape' ? finishTraining() : {}
-				}
-			>
-				<QuestionCard question={question} answer={correctAnswer} />
-				<Input
-					autoFocus
-					ref={answerInput}
-					type='text'
-					onKeyDown={(e) =>
-						e.code === 'Enter' ? submitAnswer() : {}
-					}
+			<main className={styles.trainingContainer}>
+				<TrainingMenu
+					exerciseTitle={EXERCISES_NAMES_MAPPING[exerciseId]}
+					onClick={finishTraining}
 				/>
-				<menu>
-					<CancelButton onClick={() => navigate(EXERCISES_ROUTE)}>
-						Выйти
-					</CancelButton>
-
-					<SubmitButton onClick={finishTraining}>
-						Завершить
-					</SubmitButton>
-				</menu>
+				<div
+					className={styles.ongoingTraining}
+					onKeyDown={(e) =>
+						e.code === 'Escape' ? finishTraining() : {}
+					}
+				>
+					<QuestionCard question={question} answer={correctAnswer} />
+					<Input
+						autoFocus
+						ref={answerInput}
+						type='text'
+						onKeyDown={(e) =>
+							e.code === 'Enter' ? submitAnswer() : {}
+						}
+					/>
+				</div>
 			</main>
 		)
 	}
