@@ -1,0 +1,33 @@
+@import 'src/styles/global'
+
+.statsContainer
+	@extend .glass
+	padding: 20px
+	margin-block: 10px
+
+	h3
+		margin-bottom: 10px
+		font-weight: normal
+
+.statsHistogram
+	display: grid
+	gap: 5px
+	grid-template-columns: repeat(10, 1fr)
+	min-height: 100px
+
+.bar
+	outline: 1px solid darkgray
+	display: flex
+	align-items: flex-end
+	justify-content: stretch
+
+.value
+	width: 100%
+	background-color: yellow
+
+	&[data-result='good']
+		background-color: green
+
+	&[data-result='bad']
+		background-color: red
+
