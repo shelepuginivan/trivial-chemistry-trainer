@@ -45,8 +45,7 @@ export class Stats {
 			if (typeof lastItem !== 'number' && isNaN(Number(lastItem)))
 				return new Array(10).fill(0)
 
-			if (len < 10)
-				return new Array(10 - len).fill(0).concat(parsedStats)
+			if (len < 10) return new Array(10 - len).fill(0).concat(parsedStats)
 
 			return parsedStats.slice(len - 10, len)
 		} catch {
@@ -81,10 +80,7 @@ export class Stats {
 			for (let i = 0; i < EXERCISES_NAMES_MAPPING.length; i++) {
 				const key = this._statStorageKey(i)
 
-				localStorage.setItem(
-					key,
-					JSON.stringify(new Array(10).fill(0))
-				)
+				localStorage.setItem(key, JSON.stringify(new Array(10).fill(0)))
 			}
 		} catch {}
 	}
