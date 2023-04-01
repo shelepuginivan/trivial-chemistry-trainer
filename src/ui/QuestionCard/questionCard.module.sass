@@ -2,6 +2,7 @@
 	position: relative
 	height: 200px
 	font-size: xx-large
+	transform-style: preserve-3d
 
 .questionSide,
 .answerSide
@@ -14,6 +15,8 @@
 	display: flex
 	align-items: center
 	justify-content: center
+	backface-visibility: hidden
+	-webkit-backface-visibility: hidden
 
 .questionSide
 	padding: 15px
@@ -24,11 +27,11 @@
 	padding: 15px
 	border-radius: 15px
 	background-color: bisque
-	transform: rotateY(90deg)
+	transform: rotateY(180deg)
 
 .card[data-revealed=true]
 	.questionSide
-		transform: rotateY(-90deg)
+		transform: rotateY(-180deg)
 
 	.answerSide
 		transform: rotateY(0)
