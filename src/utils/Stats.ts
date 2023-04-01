@@ -34,7 +34,7 @@ export class Stats {
 
 	static getStatsOfExerciseById(id: number): number[] {
 		try {
-			const stats = localStorage.getItem(this._statStorageKey(id))
+			const stats = localStorage.getItem(Stats._statStorageKey(id))
 
 			if (!stats) return new Array(10).fill(0)
 
@@ -54,7 +54,7 @@ export class Stats {
 	}
 
 	static getLastResultOfExerciseById(id: number): number {
-		const statsOfThisExercise = this.getStatsOfExerciseById(id)
+		const statsOfThisExercise = Stats.getStatsOfExerciseById(id)
 		return statsOfThisExercise[statsOfThisExercise.length - 1] || 0
 	}
 
@@ -63,13 +63,13 @@ export class Stats {
 		resultInPercents: number
 	): void {
 		try {
-			const statsOfExerciseById = this.getStatsOfExerciseById(id)
+			const statsOfExerciseById = Stats.getStatsOfExerciseById(id)
 
 			statsOfExerciseById.shift()
 			statsOfExerciseById.push(resultInPercents)
 
 			localStorage.setItem(
-				this._statStorageKey(id),
+				Stats._statStorageKey(id),
 				JSON.stringify(statsOfExerciseById)
 			)
 		} catch {}
@@ -78,7 +78,7 @@ export class Stats {
 	static clear(): void {
 		try {
 			for (let i = 0; i < EXERCISES_NAMES_MAPPING.length; i++) {
-				const key = this._statStorageKey(i)
+				const key = Stats._statStorageKey(i)
 
 				localStorage.setItem(key, JSON.stringify(new Array(10).fill(0)))
 			}
@@ -89,7 +89,7 @@ export class Stats {
 		const allStats: SingleExerciseStats[] = EXERCISES_NAMES_MAPPING.map(
 			(title, index) => {
 				const statsOfCurrentExercise =
-					this.getStatsOfExerciseById(index)
+					Stats.getStatsOfExerciseById(index)
 
 				return {
 					id: index,
@@ -103,16 +103,18 @@ export class Stats {
 	}
 
 	static importStatsFromJSON(json: string): void {
-		const parsedStats = JSON.parse(json)
+		try {
+			const parsedStats = JSON.parse(json)
 
-		for (let i = 0; i < parsedStats.length; i++) {
-			if (!validateExerciseStats(parsedStats[i])) return
-		}
+			for (let i = 0; i < parsedStats.length; i++) {
+				if (!validateExerciseStats(parsedStats[i])) return
+			}
 
-		parsedStats.forEach((exerciseStats: SingleExerciseStats) => {
-			const key = this._statStorageKey(exerciseStats.id)
+			parsedStats.forEach((exerciseStats: SingleExerciseStats) => {
+				const key = Stats._statStorageKey(exerciseStats.id)
 
-			localStorage.setItem(key, JSON.stringify(exerciseStats.stats))
-		})
+				localStorage.setItem(key, JSON.stringify(exerciseStats.stats))
+			})
+		} catch {}
 	}
 }
