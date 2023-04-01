@@ -86,7 +86,7 @@ export class Stats {
 
 	static clear(): void {
 		try {
-			for (let i = 1; i <= EXERCISES_NAMES_MAPPING.length; i++) {
+			for (let i = 0; i < EXERCISES_NAMES_MAPPING.length; i++) {
 				const key = this._statStorageKey(i)
 
 				localStorage.setItem(
