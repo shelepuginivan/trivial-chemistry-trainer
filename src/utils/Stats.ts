@@ -84,7 +84,7 @@ export class Stats {
 		} catch {}
 	}
 
-	static clearStats(): void {
+	static clear(): void {
 		try {
 			for (let i = 1; i <= EXERCISES_NAMES_MAPPING.length; i++) {
 				const key = this._statStorageKey(i)
