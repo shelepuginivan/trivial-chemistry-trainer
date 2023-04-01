@@ -19,10 +19,10 @@ const ExerciseCard: FC<PropsType> = ({
 			to={linkToExercise}
 			draggable={false}
 		>
-			<strong>{exerciseTitle}</strong>
+			<h3>{exerciseTitle}</h3>
 			<div className={styles.progressbarWrapper}>
 				<span>{previousResultInPercents ?? 0} %</span>
-				<progress max='100' value={previousResultInPercents ?? 0} />
+				<meter min='0' max='100' value={previousResultInPercents ?? 0} />
 			</div>
 		</Link>
 	)
