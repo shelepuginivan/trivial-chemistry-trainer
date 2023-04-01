@@ -55,15 +55,10 @@ const StatsMenu: FC = () => {
 			</blockquote>
 
 			<menu className={styles.actions}>
-				<CancelButton onClick={() => Stats.clear()}>
-					Обнулить статистику
-				</CancelButton>
-				<ExportLink ref={downloadLink}>
-					Экспортировать статистику
-				</ExportLink>
-
+				<CancelButton onClick={Stats.clear}>Обнулить</CancelButton>
+				<ExportLink ref={downloadLink}>Экспортировать</ExportLink>
 				<FileInput
-					label='Импортировать статистику'
+					label='Импортировать'
 					id='file-input'
 					accept='.json'
 					onChange={importStatsFromJSON}
