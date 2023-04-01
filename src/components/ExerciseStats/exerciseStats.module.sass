@@ -11,23 +11,17 @@
 
 .statsHistogram
 	display: grid
-	gap: 5px
+	gap: 10px
 	grid-template-columns: repeat(10, 1fr)
 	min-height: 100px
 
 .bar
-	outline: 1px solid darkgray
+	outline: 1px solid lightgray
 	display: flex
 	align-items: flex-end
 	justify-content: stretch
+	border-radius: $border-radius
 
 .value
 	width: 100%
-	background-color: yellow
-
-	&[data-result='good']
-		background-color: green
-
-	&[data-result='bad']
-		background-color: red
-
+	border-radius: $border-radius
