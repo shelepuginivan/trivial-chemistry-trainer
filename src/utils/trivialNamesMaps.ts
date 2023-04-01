@@ -22,7 +22,7 @@ export const EXERCISES_MAPS = [
 ]
 
 export const EXERCISES_NAMES_MAPPING = [
-	'Всё вместе',
+	'Все соединения',
 	'Неорганика',
 	'Органика',
 	'Оксиды',
