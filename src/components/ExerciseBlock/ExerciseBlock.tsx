@@ -7,7 +7,7 @@ const ExerciseBlock: FC<PropsType> = ({ blockName, children }) => {
 	return (
 		<div className={styles.exerciseBlock}>
 			<h2>{blockName}</h2>
-			<menu>{children}</menu>
+			<menu className='responsiveGrid'>{children}</menu>
 		</div>
 	)
 }
