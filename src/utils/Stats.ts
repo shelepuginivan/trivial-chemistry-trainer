@@ -44,7 +44,7 @@ export class Stats {
 		try {
 			const stats = localStorage.getItem(this._statStorageKey(id))
 
-			if (!stats) return []
+			if (!stats) return new Array(10).fill(0)
 
 			const parsedStats = JSON.parse(stats)
 			const len = parsedStats.length
