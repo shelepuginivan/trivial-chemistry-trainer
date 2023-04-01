@@ -18,6 +18,7 @@ const ExerciseCard: FC<PropsType> = ({
 			className={styles.exerciseCard}
 			to={linkToExercise}
 			draggable={false}
+			data-completed={previousResultInPercents === 100}
 		>
 			<h3>{exerciseTitle}</h3>
 			<div className={styles.progressbarWrapper}>
