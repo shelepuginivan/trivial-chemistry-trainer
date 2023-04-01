@@ -1,5 +1,32 @@
 import { EXERCISES_NAMES_MAPPING } from './trivialNamesMaps'
 
+type SingleExerciseStats = {
+	id: number
+	title: string
+	stats: number[]
+}
+
+const validateExerciseStats = (o: any): o is SingleExerciseStats => {
+	const keys = Array.from(Object.keys(o))
+
+	if (!keys.every((key) => ['id', 'title', 'stats'].includes(key)))
+		return false
+
+	if (
+		!keys.includes('id') ||
+		!keys.includes('title') ||
+		!keys.includes('stats')
+	)
+		return false
+
+	if (typeof o.id !== 'number' || typeof o.title !== 'string') return false
+
+	return o.stats.reduce(
+		(acc: boolean, curr: any) => acc && typeof curr === 'number',
+		true
+	)
+}
+
 export class Stats {
 	private static _statStorageKey(id: number) {
 		return `stats_${id}`
@@ -95,5 +122,36 @@ export class Stats {
 				)
 			}
 		} catch {}
+	}
+
+	static exportStatsToJSON(): string {
+		const allStats: SingleExerciseStats[] = EXERCISES_NAMES_MAPPING.map(
+			(title, index) => {
+				const statsOfCurrentExercise =
+					this.getStatsOfExerciseById(index)
+
+				return {
+					id: index,
+					title,
+					stats: statsOfCurrentExercise,
+				}
+			}
+		)
+
+		return JSON.stringify(allStats)
+	}
+
+	static importStatsFromJSON(json: string): void {
+		const parsedStats = JSON.parse(json)
+
+		for (let i = 0; i < parsedStats.length; i++) {
+			if (!validateExerciseStats(parsedStats[i])) return
+		}
+
+		parsedStats.forEach((exerciseStats: SingleExerciseStats) => {
+			const key = this._statStorageKey(exerciseStats.id)
+
+			localStorage.setItem(key, JSON.stringify(exerciseStats.stats))
+		})
 	}
 }
