@@ -3,7 +3,7 @@ import ExerciseBlock from '../components/ExerciseBlock/ExerciseBlock'
 
 const Exercises: FC = () => {
 	return (
-		<main>
+		<main className='mainContainer'>
 			<h1>Упражнения</h1>
 
 			<ExerciseBlock blockName='Общее'></ExerciseBlock>

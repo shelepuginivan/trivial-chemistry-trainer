@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 const Settings: FC = () => {
 	return (
-		<main>
+		<main className='mainContainer'>
 			<h1>Settings</h1>
 		</main>
 	)

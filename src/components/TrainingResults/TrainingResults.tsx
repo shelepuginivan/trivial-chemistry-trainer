@@ -57,7 +57,7 @@ const TrainingResults: FC<PropsType> = ({
 		) : null
 
 	return (
-		<main>
+		<main className='mainContainer'>
 			<h1>Результаты</h1>
 			<div className={styles.trainingStats}>
 				<ul>
