@@ -47,14 +47,18 @@ export class Stats {
 			if (!stats) return []
 
 			const parsedStats = JSON.parse(stats)
-			const lastItem = parsedStats[parsedStats.length - 1]
+			const len = parsedStats.length
+			const lastItem = parsedStats[len - 1]
 
 			if (typeof lastItem !== 'number' && isNaN(Number(lastItem)))
-				return []
+				return new Array(10).fill(0)
 
-			return parsedStats
+			if (len < 10)
+				return new Array(10 - len).fill(0).concat(parsedStats)
+
+			return parsedStats.slice(len - 10, len)
 		} catch {
-			return []
+			return new Array(10).fill(0)
 		}
 	}
 
@@ -70,6 +74,7 @@ export class Stats {
 		try {
 			const statsOfExerciseById = this.getStatsOfExerciseById(id)
 
+			statsOfExerciseById.shift()
 			statsOfExerciseById.push(resultInPercents)
 
 			localStorage.setItem(
@@ -84,7 +89,10 @@ export class Stats {
 			for (let i = 1; i <= EXERCISES_NAMES_MAPPING.length; i++) {
 				const key = this._statStorageKey(i)
 
-				localStorage.setItem(key, '[]')
+				localStorage.setItem(
+					key,
+					JSON.stringify(new Array(10).fill(0))
+				)
 			}
 		} catch {}
 	}
