@@ -33,6 +33,21 @@ const validateExerciseStats = (obj: unknown): obj is SingleExerciseStats => {
 }
 
 export class Stats {
+	private static _localStorageSupported(): boolean {
+		if (!localStorage) return false
+
+		try {
+			const testKey = '__test__'
+
+			localStorage.setItem(testKey, testKey)
+			localStorage.removeItem(testKey)
+
+			return true
+		} catch {
+			return false
+		}
+	}
+
 	private static _statStorageKey(id: number) {
 		return `stats_${id}`
 	}
@@ -56,6 +71,8 @@ export class Stats {
 
 	static getStatsOfExerciseById(id: number): number[] {
 		try {
+			if (!Stats._localStorageSupported()) return new Array(10).fill(0)
+
 			const stats = localStorage.getItem(Stats._statStorageKey(id))
 
 			if (!stats) return new Array(10).fill(0)
@@ -85,6 +102,8 @@ export class Stats {
 		resultInPercents: number
 	): void {
 		try {
+			if (!Stats._localStorageSupported()) return
+
 			const statsOfExerciseById = Stats.getStatsOfExerciseById(id)
 
 			statsOfExerciseById.shift()
@@ -100,13 +119,15 @@ export class Stats {
 	}
 
 	static clear(): void {
-		try {
-			for (let i = 0; i < EXERCISES_NAMES_MAPPING.length; i++) {
-				const key = Stats._statStorageKey(i)
+		if (!Stats._localStorageSupported()) return
 
-				localStorage.setItem(key, JSON.stringify(new Array(10).fill(0)))
-			}
-		} catch {}
+		localStorage.clear()
+
+		for (let i = 0; i < EXERCISES_NAMES_MAPPING.length; i++) {
+			const key = Stats._statStorageKey(i)
+
+			localStorage.setItem(key, JSON.stringify(new Array(10).fill(0)))
+		}
 	}
 
 	static exportStatsToJSON(): string {
@@ -128,7 +149,7 @@ export class Stats {
 
 	static importStatsFromJSON(json: string): void {
 		try {
-			const parsedStats = JSON.parse(json)
+			if (!Stats._localStorageSupported()) return
 
 			for (let i = 0; i < parsedStats.length; i++) {
 				if (!validateExerciseStats(parsedStats[i])) return
