@@ -13,6 +13,13 @@
 		.ongoingTraining
 			margin: 0 0 10px
 
+	.trainingStats
+		flex-direction: column
+		align-items: stretch
+
+		& > *
+			margin-block: 10px
+
 @media screen and (max-width: 600px)
 	.mainContainer
 		margin-inline: 15px
@@ -42,3 +49,14 @@
 
 		h3
 			font-size: medium
+
+	div.ongoingTraining
+		padding: 20px
+
+
+		input
+			width: 80%
+
+
+	.trainingStats *
+		font-size: medium
