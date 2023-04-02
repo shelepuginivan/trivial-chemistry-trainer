@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes, FC } from 'react'
+
 import SubmitButton from '../../ui/SubmitButton/SubmitButton'
 import styles from './trainingMenu.module.sass'
 

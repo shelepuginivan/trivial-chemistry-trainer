@@ -1,7 +1,8 @@
 import { FC } from 'react'
+
 import ExerciseStats from '../components/ExerciseStats/ExerciseStats'
-import { EXERCISES_NAMES_MAPPING } from '../utils/trivialNamesMaps'
 import StatsMenu from '../components/StatsMenu/StatsMenu'
+import { EXERCISES_NAMES_MAPPING } from '../utils/trivialNamesMaps'
 
 const Stats: FC = () => {
 	return (

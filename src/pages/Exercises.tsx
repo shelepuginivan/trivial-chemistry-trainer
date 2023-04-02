@@ -1,4 +1,5 @@
 import { FC } from 'react'
+
 import ExerciseBlock from '../components/ExerciseBlock/ExerciseBlock'
 import ExerciseCard from '../ui/ExerciseCard/ExerciseCard'
 import { exerciseLink } from '../utils/exerciseLink'

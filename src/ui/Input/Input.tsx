@@ -1,4 +1,5 @@
 import { forwardRef, InputHTMLAttributes } from 'react'
+
 import styles from './input.module.sass'
 
 type PropsType = InputHTMLAttributes<HTMLInputElement>

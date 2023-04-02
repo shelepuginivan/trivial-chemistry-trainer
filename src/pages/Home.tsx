@@ -1,6 +1,7 @@
 import { FC } from 'react'
-import HomePageSection from '../ui/HomePageSection/HomePageSection'
+
 import HomePageLink from '../ui/HomePageLink/HomePageLink'
+import HomePageSection from '../ui/HomePageSection/HomePageSection'
 import { EXERCISES_ROUTE, STATS_ROUTE } from '../utils/routes'
 
 const Home: FC = () => {

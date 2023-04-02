@@ -1,12 +1,13 @@
 import { FC, useRef, useState } from 'react'
-import { EXERCISES_MAPS, EXERCISES_NAMES_MAPPING } from '../../utils/trivialNamesMaps'
-import { randomMapItem } from '../../utils/randomMapItem'
-import TrainingResults from '../TrainingResults/TrainingResults'
+
 import Input from '../../ui/Input/Input'
 import QuestionCard from '../../ui/QuestionCard/QuestionCard'
-import styles from './trainingComponent.module.sass'
+import { randomMapItem } from '../../utils/randomMapItem'
 import { Stats } from '../../utils/Stats'
+import { EXERCISES_MAPS, EXERCISES_NAMES_MAPPING } from '../../utils/trivialNamesMaps'
 import TrainingMenu from '../TrainingMenu/TrainingMenu'
+import TrainingResults from '../TrainingResults/TrainingResults'
+import styles from './trainingComponent.module.sass'
 
 const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 	const trainingStartTime = useRef(Date.now())

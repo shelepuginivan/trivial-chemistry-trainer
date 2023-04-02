@@ -1,4 +1,5 @@
 import { FC } from 'react'
+
 import { timeInReadableFormat } from '../../utils/timeInReadableFormat'
 import styles from './trainingResults.module.sass'
 

@@ -1,9 +1,10 @@
 import { ChangeEvent, FC, useEffect, useRef } from 'react'
+
 import CancelButton from '../../ui/CancelButton/CancelButton'
+import ExportLink from '../../ui/ExportLink/ExportLink'
+import FileInput from '../../ui/FileInput/FileInput'
 import { Stats } from '../../utils/Stats'
 import styles from './statsMenu.module.sass'
-import FileInput from '../../ui/FileInput/FileInput'
-import ExportLink from '../../ui/ExportLink/ExportLink'
 
 const StatsMenu: FC = () => {
 	const downloadLink = useRef<HTMLAnchorElement>(null)

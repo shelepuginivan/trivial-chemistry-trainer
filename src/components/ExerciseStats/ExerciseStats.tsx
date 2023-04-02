@@ -1,4 +1,5 @@
 import { FC } from 'react'
+
 import { Stats } from '../../utils/Stats'
 import { EXERCISES_NAMES_MAPPING } from '../../utils/trivialNamesMaps'
 import styles from './exerciseStats.module.sass'

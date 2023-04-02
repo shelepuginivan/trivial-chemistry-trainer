@@ -1,16 +1,17 @@
 import React from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+
+import Exercises from '../pages/Exercises'
+import Home from '../pages/Home'
+import Stats from '../pages/Stats'
+import Training from '../pages/Training'
 import {
 	EXERCISES_ROUTE,
 	HOME_ROUTE,
 	STATS_ROUTE,
 	TRAINING_ROUTE,
 } from '../utils/routes'
-import Home from '../pages/Home'
-import Training from '../pages/Training'
-import Stats from '../pages/Stats'
 import Header from './Header/Header'
-import Exercises from '../pages/Exercises'
 
 const AppRouter = () => {
 	return (

@@ -1,7 +1,8 @@
 import { FC } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
-import { EXERCISES_ROUTE } from '../utils/routes'
+
 import TrainingComponent from '../components/TrainingComponent/TrainingComponent'
+import { EXERCISES_ROUTE } from '../utils/routes'
 
 const Training: FC = () => {
 	const params = useParams<{exerciseId: string}>()

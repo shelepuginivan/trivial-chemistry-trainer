@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
+
 import { HOME_ROUTE } from '../../utils/routes'
 
 const Logo: FC = () => (

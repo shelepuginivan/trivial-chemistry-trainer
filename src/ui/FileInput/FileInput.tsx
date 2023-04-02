@@ -1,4 +1,5 @@
 import { FC, InputHTMLAttributes } from 'react'
+
 import styles from './fileInput.module.sass'
 
 type PropsType = {

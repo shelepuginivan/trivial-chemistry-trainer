@@ -1,4 +1,5 @@
 import { FC, PropsWithChildren } from 'react'
+
 import styles from './exerciseBlock.module.sass'
 
 type PropsType = { blockName: string } & PropsWithChildren
