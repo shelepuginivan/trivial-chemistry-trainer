@@ -37,6 +37,23 @@ export class Stats {
 		return `stats_${id}`
 	}
 
+	private static _handleQuotaExceedError() {
+		const allStats = Array(10).map((_, index) => {
+			const stats = localStorage.getItem(Stats._statStorageKey(index))
+
+			return stats ? JSON.parse(stats) : new Array(10).fill(0)
+		})
+
+		localStorage.clear()
+
+		allStats.forEach((stats, index) => {
+			localStorage.setItem(
+				Stats._statStorageKey(index),
+				JSON.stringify(stats)
+			)
+		})
+	}
+
 	static getStatsOfExerciseById(id: number): number[] {
 		try {
 			const stats = localStorage.getItem(Stats._statStorageKey(id))
