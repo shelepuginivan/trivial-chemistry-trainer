@@ -148,6 +148,14 @@ export class Stats {
 	}
 
 	static importStatsFromJSON(json: string): void {
+		let parsedStats
+
+		try {
+			parsedStats = JSON.parse(json)
+		} catch {
+			return
+		}
+
 		try {
 			if (!Stats._localStorageSupported()) return
 
