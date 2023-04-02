@@ -6,25 +6,22 @@ type SingleExerciseStats = {
 	stats: number[]
 }
 
-const validateExerciseStats = (o: any): o is SingleExerciseStats => {
-	const keys = Array.from(Object.keys(o))
+const validateExerciseStats = (obj: unknown): obj is SingleExerciseStats => {
+	if (typeof obj !== 'object' || obj === null) return false
 
-	if (!keys.every((key) => ['id', 'title', 'stats'].includes(key)))
-		return false
+	const o = obj as Record<string, unknown>
 
 	if (
-		!keys.includes('id') ||
-		!keys.includes('title') ||
-		!keys.includes('stats')
+		!obj.hasOwnProperty('id') ||
+		!obj.hasOwnProperty('title') ||
+		!obj.hasOwnProperty('stats')
 	)
 		return false
 
 	if (typeof o.id !== 'number' || typeof o.title !== 'string') return false
+	if (!Array.isArray(o.stats)) return false
 
-	return o.stats.reduce(
-		(acc: boolean, curr: any) => acc && typeof curr === 'number',
-		true
-	)
+	return o.stats.every((num) => typeof num === 'number')
 }
 
 export class Stats {
