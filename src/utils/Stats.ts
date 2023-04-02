@@ -94,7 +94,9 @@ export class Stats {
 				Stats._statStorageKey(id),
 				JSON.stringify(statsOfExerciseById)
 			)
-		} catch {}
+		} catch (e) {
+			if (isQuotaExceedError(e)) Stats._handleQuotaExceedError()
+		}
 	}
 
 	static clear(): void {
@@ -137,6 +139,8 @@ export class Stats {
 
 				localStorage.setItem(key, JSON.stringify(exerciseStats.stats))
 			})
-		} catch {}
+		} catch (e) {
+			if (isQuotaExceedError(e)) Stats._handleQuotaExceedError()
+		}
 	}
 }
