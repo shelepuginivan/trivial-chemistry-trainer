@@ -20,9 +20,9 @@ const validateExerciseStats = (obj: unknown): obj is SingleExerciseStats => {
 	const o = obj as Record<string, unknown>
 
 	if (
-		!obj.hasOwnProperty('id') ||
-		!obj.hasOwnProperty('title') ||
-		!obj.hasOwnProperty('stats')
+		!Object.prototype.hasOwnProperty.call(o, 'id') ||
+		!Object.prototype.hasOwnProperty.call(o, 'title') ||
+		!Object.prototype.hasOwnProperty.call(o, 'stats')
 	)
 		return false
 
