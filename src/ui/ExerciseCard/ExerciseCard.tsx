@@ -23,7 +23,7 @@ const ExerciseCard: FC<PropsType> = ({
 		>
 			<h3>{exerciseTitle}</h3>
 			<div className={styles.progressbarWrapper}>
-				<span>{previousResultInPercents ?? 0} %</span>
+				<span>{previousResultInPercents ?? 0}&nbsp;%</span>
 				<meter min='0' max='100' value={previousResultInPercents ?? 0} />
 			</div>
 		</Link>
