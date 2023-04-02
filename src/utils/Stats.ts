@@ -6,6 +6,14 @@ type SingleExerciseStats = {
 	stats: number[]
 }
 
+const isQuotaExceedError = (e: unknown): boolean => {
+	return (
+		e instanceof DOMException &&
+		(e.name === 'QuotaExceededError' ||
+			e.name === 'NS_ERROR_DOM_QUOTA_REACHED')
+	)
+}
+
 const validateExerciseStats = (obj: unknown): obj is SingleExerciseStats => {
 	if (typeof obj !== 'object' || obj === null) return false
 
