@@ -77,9 +77,7 @@ const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 						autoFocus
 						ref={answerInput}
 						type='text'
-						onKeyDown={(e) =>
-							e.code === 'Enter' ? submitAnswer() : {}
-						}
+						onEnter={submitAnswer}
 					/>
 				</div>
 			</main>
