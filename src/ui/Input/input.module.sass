@@ -1,12 +1,26 @@
 @import 'src/styles/variables'
 
-.input
+.inputWrapper
 	transition: $transition
-	outline: 1px solid darkgray
-	font-size: larger
-	padding: 5px
-	text-align: center
+	display: flex
+	align-items: center
 	height: 30px
 
-	&:focus
-		border-radius: 30px
+	*
+		outline: 1px solid darkgray
+		padding: 5px
+		height: 30px
+
+	input
+		font-size: larger
+		text-align: center
+		flex-grow: 1
+
+	button
+		width: 30px
+		background-color: white
+		cursor: pointer
+
+		&:hover
+			background-color: lightgray
+
