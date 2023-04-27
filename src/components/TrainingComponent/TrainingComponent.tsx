@@ -34,7 +34,8 @@ const TrainingComponent: FC<{ exerciseId: number }> = ({ exerciseId }) => {
 			const receivedAnswer = answerInput.current?.value
 
 			if (!receivedAnswer) return
-			;(receivedAnswer === correctAnswer
+
+			(receivedAnswer === correctAnswer
 				? setCorrectAnswers
 				: setIncorrectAnswers)((prev) => [
 				...prev,
