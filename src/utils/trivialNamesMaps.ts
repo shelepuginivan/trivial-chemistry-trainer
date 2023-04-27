@@ -117,7 +117,27 @@ const NON_ORGANIC_MAP = new Map<string, string>([
 	...NON_ORGANIC_SALTS_MAP,
 ])
 
-const ORGANIC_MAP = new Map<string, string>([])
+const MONOCARBON_ACIDS = new Map<string, string>([
+	['Муравьиная кислота', 'HCOOH'],
+	['Уксусная кислота', 'CH3COOH'],
+	['Пропионовая кислота', ' CH3CH2COOH'],
+	['Масляная кислота', 'СH3(CH2)2СООН'],
+	['Валериановая кислота', 'СH3(CH2)3СООН'],
+	['Капроновая кислота', 'СH3(CH2)4СООН'],
+	['Пальмитиновая кислота', 'C15H31COOH'],
+	['Стеариновая кислота', 'C17H35COOH'],
+	['Олеиновая кислота', 'C17H33COOH'],
+	['Линолевая кислота', 'C17H31COOH'],
+	['Линоленовая кислота ', 'C17H29COOH'],
+])
+
+const ORGANIC_ACIDS = new Map<string, string>([
+	...MONOCARBON_ACIDS
+])
+
+const ORGANIC_MAP = new Map<string, string>([
+	...ORGANIC_ACIDS
+])
 
 const ALL_CHEMICALS_MAP = new Map<string, string>([
 	...NON_ORGANIC_MAP,
@@ -132,7 +152,9 @@ export const EXERCISES_MAPS = [
 	NON_ORGANIC_ACIDS_MAP,
 	NON_ORGANIC_SALTS_MAP,
 	ALKALIES,
-	OTHER_NON_ORGANIC
+	OTHER_NON_ORGANIC,
+	ORGANIC_ACIDS,
+	MONOCARBON_ACIDS
 ]
 
 export const EXERCISES_NAMES_MAPPING = [
@@ -143,6 +165,8 @@ export const EXERCISES_NAMES_MAPPING = [
 	'Кислоты',
 	'Соли',
 	'Щёлочи',
-	'Другое'
+	'Другое',
+	'Все кислоты',
+	'Монокарбоновые кислоты'
 	// TODO: Add more exercises
 ]
