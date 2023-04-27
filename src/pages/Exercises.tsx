@@ -29,6 +29,10 @@ const Exercises: FC = () => {
 			<ExerciseBlock blockName='Нерганическая химия'>
 				{[3, 4, 5, 6, 7].map((index) => exerciseCardById(index))}
 			</ExerciseBlock>
+
+			<ExerciseBlock blockName='Органическая химия'>
+				{[8, 9].map((index) => exerciseCardById(index))}
+			</ExerciseBlock>
 		</main>
 	)
 }
